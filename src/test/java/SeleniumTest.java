@@ -18,16 +18,6 @@ public class SeleniumTest {
 
     @Test
     public void openGooglePageChrome(){
-        // Poniższe kroki są opcjonalne
-        /*
-        String path = "C:\\selenium-java-4.20.0\\selenium-chrome-driver-4.20.0.jar";
-        System.setProperty("webdriver.chrome.driver",path);
-
-        // Otwarcie przeglądarki Chrome
-        ChromeDriver driver = new ChromeDriver();
-        // Otwarcie strony
-        driver.get("https://www.google.com");
-         */
         WebDriver driver = getDriver("chrome");
         driver.get("https://www.google.com");
     }
