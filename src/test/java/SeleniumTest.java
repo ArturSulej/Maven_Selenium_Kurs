@@ -9,40 +9,13 @@ import org.testng.annotations.Test;
 
 public class SeleniumTest {
 
-    public WebDriver getDriver(String browser){
+    public static WebDriver getDriver(String browser){
         return switch (browser) {
             case "chrome" -> new ChromeDriver();
             case "firefox" -> new FirefoxDriver();
             case "ie" -> new InternetExplorerDriver();
             default -> throw new IllegalArgumentException("Invalid browser name");
         };
-    }
-
-    // Pierwszy test
-    @Test
-    public void searchGoogleChrome(){
-        WebDriver driver = getDriver("chrome");
-        driver.manage().window().maximize();
-        driver.get("https://www.google.com");
-
-        // Zaakceptowanie cookies w google.com
-        //driver.switchTo().frame(0); // przejście do okna z plikami cookie
-        WebElement agreeButton = driver.findElement(By.xpath("//div[text()='Zaakceptuj wszystko']"));
-        agreeButton.click(); // Naciśnięcie przycisku
-
-        // Powrót do pierwotnego okna
-        //driver.switchTo().defaultContent();
-
-        //Symulacja wyszukiwania
-        WebElement searchField = driver.findElement(By.name("q"));
-        searchField.sendKeys("Selenium");
-        searchField.sendKeys(Keys.ENTER);
-
-        // Znaleźć rezultat
-        WebElement result = driver.findElement(By.xpath("//a[contains(@href,'selenium.dev')]//h3"));
-
-        // Sprawdzenie - asercja
-        Assert.assertTrue(result.isDisplayed());
     }
 
     // Old version
